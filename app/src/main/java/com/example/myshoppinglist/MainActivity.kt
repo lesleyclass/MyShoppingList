@@ -20,16 +20,22 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MyShoppingListTheme {
-                MyShoppingListContainer()
+                MyShoppingListContainer(
+                    onCloseClick = { finishPayment() },
+                )
             }
         }
     }
+
+    private fun finishPayment() = finish()
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     MyShoppingListTheme {
-        MyShoppingListContainer()
+        MyShoppingListContainer(
+            onCloseClick = {},
+        )
     }
 }

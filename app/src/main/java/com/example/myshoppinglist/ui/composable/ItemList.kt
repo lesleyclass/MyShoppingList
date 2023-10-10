@@ -19,9 +19,8 @@ internal const val ITEM_LIST_DIVIDER_TAG = "ItemListDivider"
 @Composable
 internal fun ItemList(
     items: List<ItemUiState>,
-    modifier: Modifier = Modifier,
 ) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn{
         itemsIndexed(items) { index, item ->
             Box(
                 modifier = Modifier

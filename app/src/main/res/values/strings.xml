@@ -7,4 +7,13 @@
     <string name="item_total_value_label">Valor Total: R$ %1$s</string>
     <string name="button_label">New Item</string>
     <string name="button_content_description">Extended floating action button.</string>
+    <string name="item_name_form">Product Name</string>
+    <string name="item_value_form">Product value</string>
+    <string name="item_quantity_form">Product quantity</string>
+    <string name="item_totalValue_form">Product totalValue</string>
+    <string name="item_description_form">Product description</string>
+    <string name="new_item_screem_title">Novo Registro</string>
+    <string name="new_item_screen_subtitle">O preenchimento de todos os campos são obrigat</string>
+    <string name="cancel_button_label">Cancelar</string>
+    <string name="save_button_label">Salva</string>
 </resources>

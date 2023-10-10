@@ -2,8 +2,6 @@ package com.example.myshoppinglist.ui.composable
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
@@ -20,13 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
-import com.example.myshoppinglist.ui.CreateNewItem
+import com.example.myshoppinglist.ui.NavigateToNewItem
+import com.example.myshoppinglist.ui.OnCreateNewItemClick
 import com.example.myshoppinglist.ui.composable.toolbar.TopAppBar
 import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
-import kotlinx.coroutines.flow.collect
 
 private const val SHOPPING_LIST_SCREEN_TAG = "ShoppingListScreen"
 private const val SHOPPING_LIST_SCREEN_TITLE_TAG = "ShoppingListScreenTitle"
@@ -36,18 +35,20 @@ private const val BUTTON_TAG = "Button"
 internal fun ShoppingListScreen(
     viewModel: ShoppingListViewModel,
     navigator: ShoppingListNavigator,
+    onCloseClick: () -> Unit,
 ){
     val uiState by viewModel.stateFlow.collectAsState()
 
     ShoppingListScreen(
         uiState = uiState,
-        onCreateNewItemClick = {},
+        onCreateNewItemClick = { viewModel.onSendEvent(OnCreateNewItemClick) },
+        onCloseClick = onCloseClick,
     )
 
     LaunchedEffect(key1 = Unit) {
         viewModel.effectFlow.collect{ effect ->
             when (effect) {
-                is CreateNewItem -> {}
+                is NavigateToNewItem -> { navigator.navigateToNewItem(effect.item) }
             }
         }
     }
@@ -58,6 +59,7 @@ internal fun ShoppingListScreen(
     uiState: ShoppingListUiState,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onCreateNewItemClick: () -> Unit,
+    onCloseClick: () -> Unit,
 ){
     Scaffold(
         modifier = Modifier.testTag(SHOPPING_LIST_SCREEN_TAG),
@@ -65,7 +67,7 @@ internal fun ShoppingListScreen(
             TopAppBar(
                 titleRes = R.string.toolbar_title,
                 navigationIconRes = R.drawable.ic_baseline_close,
-                onNavigationIconClick = {},
+                onNavigationIconClick = { onCloseClick() },
                 tag = SHOPPING_LIST_SCREEN_TITLE_TAG,
             )
         },
@@ -85,9 +87,7 @@ internal fun ShoppingListScreen(
         },
         content = { paddingValues ->
             Column(
-                modifier = Modifier
-                    .padding(paddingValues)
-                    .verticalScroll(rememberScrollState()),
+                modifier = Modifier.padding(paddingValues),
             ) {
                 ShoppingListContent(
                     uiState = uiState,
@@ -101,7 +101,8 @@ internal fun ShoppingListScreen(
 @Composable
 internal fun ShoppingListScreenPreview(){
     ShoppingListScreen(
-        uiState = ShoppingListUiState(emptyList()),
+        uiState = ShoppingListUiState(emptyList(), ItemUiState()),
         onCreateNewItemClick = {},
+        onCloseClick = {},
     )
 }
