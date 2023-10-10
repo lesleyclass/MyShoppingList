@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyShoppingList</string>
+
+    <string name="item_value_label">Preço: R$ %1$s</string>
+    <string name="item_quantity_label">Qtd: %1$s</string>
+    <string name="item_total_value_label">Valor Total: R$ %1$s</string>
 </resources>
