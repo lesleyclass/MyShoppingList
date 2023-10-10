@@ -1,10 +1,10 @@
-package com.example
+package com.example.myshoppinglist.ui
 
+import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.fake.randomDouble
 import com.example.myshoppinglist.fake.randomInt
 import com.example.myshoppinglist.fake.randomMessage
 import com.example.myshoppinglist.fake.randomName
-import com.example.myshoppinglist.ItemUiState
 
 internal fun randomItemUiState(
     name: String = randomName(),
@@ -20,3 +20,12 @@ internal fun randomItemUiState(
         totalValue = totalValue,
         description = description,
     )
+
+internal fun randomItemUiStateList(
+    size: Int = randomInt(min = 1),
+): List<ItemUiState> =
+    mutableListOf<ItemUiState>().apply {
+        repeat(size) {
+            add(randomItemUiState())
+        }
+    }

@@ -6,12 +6,6 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.myshoppinglist.R
-import com.example.myshoppinglist.fake.randomDouble
-import com.example.myshoppinglist.fake.randomInt
-import com.example.myshoppinglist.fake.randomMessage
-import com.example.myshoppinglist.fake.randomName
-import com.example.myshoppinglist.ui.composable.Item
-import com.example.randomItemUiState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

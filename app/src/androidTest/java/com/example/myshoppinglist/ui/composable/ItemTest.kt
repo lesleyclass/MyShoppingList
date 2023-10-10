@@ -10,7 +10,7 @@ import com.example.myshoppinglist.fake.randomDouble
 import com.example.myshoppinglist.fake.randomInt
 import com.example.myshoppinglist.fake.randomMessage
 import com.example.myshoppinglist.fake.randomName
-import com.example.randomItemUiState
+import com.example.myshoppinglist.ui.randomItemUiState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

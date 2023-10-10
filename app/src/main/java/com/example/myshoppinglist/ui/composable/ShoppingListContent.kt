@@ -1,6 +1,5 @@
 package com.example.myshoppinglist.ui.composable
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myshoppinglist.ShoppingListUiState
@@ -9,7 +8,7 @@ import com.example.myshoppinglist.ShoppingListUiState
 internal fun ShoppingListContent(
     uiState: ShoppingListUiState,
 ) {
-    Text(text = "test state")
+    ItemList(items = uiState.items)
 }
 
 @Preview(showBackground = true)
