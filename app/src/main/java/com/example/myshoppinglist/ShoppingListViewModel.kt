@@ -43,7 +43,10 @@ internal class ShoppingListViewModel(
     }
 
     private fun initialize() = setState {
-        copy(items = itemsStore.getItems())
+        copy(
+            items = itemsStore.getItems(),
+            totalValue = itemsStore.getTotalValue(),
+        )
     }
 
     private suspend fun onCreateNewItemClick() {

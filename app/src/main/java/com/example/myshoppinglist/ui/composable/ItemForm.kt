@@ -93,7 +93,7 @@ private fun ItemFormTextField(
             value = itemValue,
             onValueChange = {
                 itemValue = it
-                onFieldChange(itemValue)
+                if (it.isNullOrBlank().not()) onFieldChange(itemValue)
             },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = keyboardOptions,

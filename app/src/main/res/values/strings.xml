@@ -2,6 +2,8 @@
     <string name="app_name">MyShoppingList</string>
 
     <string name="toolbar_title">Order Registration</string>
+    <string name="total_value_label_text">Valor total</string>
+    <string name="total_value_label">R$ %1$s</string>
     <string name="item_value_label">Price: R$ %1$s</string>
     <string name="item_quantity_label">Qtd: %1$s</string>
     <string name="item_total_value_label">Valor Total: R$ %1$s</string>

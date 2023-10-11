@@ -1,5 +1,6 @@
 package com.example.myshoppinglist.ui.composable
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExtendedFloatingActionButton
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
@@ -87,7 +89,9 @@ internal fun ShoppingListScreen(
         content = { paddingValues ->
             Column(
                 modifier = Modifier.padding(paddingValues),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                TotalValueSection(value = uiState.totalValue)
                 ShoppingListContent(
                     uiState = uiState,
                 )
