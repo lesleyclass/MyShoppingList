@@ -7,9 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Parcelize
 internal data class ItemUiState (
-    val name: String = "",
-    val value: Double = 0.0,
-    val quantity: Int = 0,
-    val totalValue: Double = 0.0,
-    val description: String = "",
+    val name: String? = null,
+    val value: Double? = null,
+    val quantity: Int? = null,
+    val totalValue: Double? = null,
+    val description: String? = null,
 ) : Parcelable

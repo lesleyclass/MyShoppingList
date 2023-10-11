@@ -31,41 +31,51 @@ internal fun Item(
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
+            item.name?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.body1,
+                )
+            }
+            item.value?.let {
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = stringResource(
+                        id = R.string.item_value_label,
+                        it,
+                    ),
+                    style = MaterialTheme.typography.body1,
+                )
+            }
+        }
+        item.description?.let {
             Text(
-                text = item.name,
-                style = MaterialTheme.typography.body1,
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = stringResource(
-                    id = R.string.item_value_label,
-                    item.value,
-                ),
-                style = MaterialTheme.typography.body1,
+                text = it,
+                style = MaterialTheme.typography.body2,
             )
         }
-        Text(
-            text = item.description,
-            style = MaterialTheme.typography.body2,
-        )
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text(
-                text = stringResource(
-                    id = R.string.item_quantity_label,
-                    item.quantity,
-                ),
-                style = MaterialTheme.typography.body2,
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = stringResource(
-                    id = R.string.item_total_value_label,
-                    item.totalValue,
-                ),
-                style = MaterialTheme.typography.body2,
-            )
+            item.quantity?.let {
+                Text(
+                    text = stringResource(
+                        id = R.string.item_quantity_label,
+                        it,
+                    ),
+                    style = MaterialTheme.typography.body2,
+                )
+            }
+            item.totalValue?.let {
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = stringResource(
+                        id = R.string.item_total_value_label,
+                        it,
+                    ),
+                    style = MaterialTheme.typography.body2,
+                )
+            }
         }
     }
 }

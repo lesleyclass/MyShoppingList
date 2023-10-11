@@ -111,6 +111,7 @@ internal fun  NewItemScreen(
                     .weight(0.5f)
                     .fillMaxWidth().
                     height(50.dp),
+                enabled = uiState.isSaveButtonEnabled,
             ) {
                 Text(text = stringResource(R.string.save_button_label).uppercase())
             }

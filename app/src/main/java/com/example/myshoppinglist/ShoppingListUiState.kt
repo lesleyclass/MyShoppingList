@@ -10,4 +10,5 @@ internal data class ShoppingListUiState (
     val items: List<ItemUiState> = emptyList(),
     val newItem: ItemUiState = ItemUiState(),
     val totalValue: Double = 0.0,
+    val isSaveButtonEnabled: Boolean = false,
 ) : Parcelable

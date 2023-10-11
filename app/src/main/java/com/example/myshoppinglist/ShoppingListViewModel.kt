@@ -17,11 +17,13 @@ import com.example.myshoppinglist.ui.UiEvent
 import com.example.myshoppinglist.ui.UiEventImpl
 import com.example.myshoppinglist.ui.UiState
 import com.example.myshoppinglist.ui.UiStateImpl
+import com.example.myshoppinglist.validation.ButtonValidation
 import kotlinx.coroutines.launch
 
 internal class ShoppingListViewModel(
     initialState: ShoppingListUiState,
     private val itemsStore: ItemsStore,
+    private val saveButtonValidation: ButtonValidation,
 ) : ViewModel(),
     UiState<ShoppingListUiState> by UiStateImpl(initialState),
     UiEvent<ShoppingListUiEvent> by UiEventImpl(),
@@ -43,11 +45,13 @@ internal class ShoppingListViewModel(
     }
 
     private fun initialize() = setState {
-        copy(
-            items = itemsStore.getItems(),
-            totalValue = itemsStore.getTotalValue(),
-        )
+        copy(items = itemsStore.getItems())
+            .updateTotalAmount()
+            .updateSaveButton()
     }
+
+    private fun ShoppingListUiState.updateTotalAmount() : ShoppingListUiState =
+        copy(totalValue = itemsStore.getTotalValue())
 
     private suspend fun onCreateNewItemClick() {
         sendEffect(NavigateToNewItem)
@@ -63,33 +67,41 @@ internal class ShoppingListViewModel(
         initialize()
     }
 
-    private fun onFieldChange(field: ItemField) = setState {
-        copy(
-            newItem = when (field) {
-                is ItemField.Name -> newItem.updateNameState(field)
-                is ItemField.Value -> newItem.updateValueState(field)
-                is ItemField.Quantity -> newItem.updateQuantityState(field)
-                is ItemField.TotalValue -> newItem.updateTotalValueState(field)
-                is ItemField.Description -> newItem.updateDescriptionState(field)
+    private fun onFieldChange(field: ItemField){
+         when (field) {
+                is ItemField.Name -> updateNameState(field)
+                is ItemField.Value -> updateValueState(field)
+                is ItemField.Quantity -> updateQuantityState(field)
+                is ItemField.TotalValue -> updateTotalValueState(field)
+                is ItemField.Description -> updateDescriptionState(field)
             }
+    }
+
+    private fun updateNameState(field: ItemField) = setState {
+        copy(newItem = newItem.copy( name = field.value)).updateSaveButton()
+    }
+
+    private fun updateValueState(field: ItemField) = setState {
+        copy(newItem = newItem.copy( value = field.value?.toDouble())).updateSaveButton()
+    }
+
+    private fun updateQuantityState(field: ItemField) = setState {
+        copy(newItem = newItem.copy( quantity = field.value?.toInt())).updateSaveButton()
+    }
+
+    private fun updateTotalValueState(field: ItemField) = setState {
+        copy(newItem = newItem.copy( totalValue = field.value?.toDouble())).updateSaveButton()
+    }
+
+    private fun updateDescriptionState(field: ItemField) = setState {
+        copy(
+            newItem = newItem.copy( description = field.value),
+            isSaveButtonEnabled = saveButtonValidation.isValid(this.newItem)
         )
     }
 
-    private fun ItemUiState.updateNameState(field: ItemField): ItemUiState =
-        copy(name = field.value)
-
-    private fun ItemUiState.updateValueState(field: ItemField): ItemUiState =
-        copy(value = field.value.toDouble())
-
-    private fun ItemUiState.updateQuantityState(field: ItemField): ItemUiState =
-        copy(quantity = field.value.toInt())
-
-    private fun ItemUiState.updateTotalValueState(field: ItemField): ItemUiState =
-        copy(totalValue = field.value.toDouble())
-
-    private fun ItemUiState.updateDescriptionState(field: ItemField): ItemUiState =
-        copy(description = field.value)
-
+    private fun ShoppingListUiState.updateSaveButton() : ShoppingListUiState =
+        copy(isSaveButtonEnabled = saveButtonValidation.isValid(this.newItem))
 
     fun onSendEvent(event: ShoppingListUiEvent) {
         viewModelScope.launch { sendEvent(event) }

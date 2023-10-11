@@ -10,6 +10,7 @@ internal class ItemsStore {
     }
 
     internal fun getItems(): List<ItemUiState> = this.items
-    internal fun getTotalValue(): Double = this.items.sumOf { it.totalValue }
+
+    internal fun getTotalValue(): Double = this.items.sumOf { it.totalValue ?: 0.0 }
 
 }

@@ -9,10 +9,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -37,45 +33,77 @@ internal fun ItemForm(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ItemFormTextField(
-            value = uiState.name,
             labelRes = R.string.item_name_form,
-            onFieldChange = { onFieldChange( ItemField.Name(it))},
+            content = {
+                OutlinedTextField(
+                    value = uiState.name ?: "",
+                    onValueChange = {
+                        onFieldChange( ItemField.Name(it.ifBlank { null }))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                )
+            }
         )
         ItemFormTextField(
-            value = uiState.value.toString(),
             labelRes = R.string.item_value_form,
-            onFieldChange = { onFieldChange( ItemField.Value(it))},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            content = {
+                OutlinedTextField(
+                    value = uiState.value?.toString() ?: "",
+                    onValueChange = {
+                        onFieldChange( ItemField.Value(it.ifBlank { null }))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                )
+            }
         )
         ItemFormTextField(
-            value = uiState.quantity.toString(),
             labelRes = R.string.item_quantity_form,
-            onFieldChange = { onFieldChange( ItemField.Quantity(it))},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            content = {
+                OutlinedTextField(
+                    value = uiState.quantity?.toString() ?: "",
+                    onValueChange = {
+                        onFieldChange( ItemField.Quantity(it.ifBlank { null }))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                )
+            }
         )
         ItemFormTextField(
-            value = uiState.totalValue.toString(),
             labelRes = R.string.item_totalValue_form,
-            onFieldChange = { onFieldChange( ItemField.TotalValue(it))},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            content = {
+                OutlinedTextField(
+                    value = uiState.totalValue?.toString() ?: "",
+                    onValueChange = {
+                        onFieldChange( ItemField.TotalValue(it.ifBlank { null }))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                )
+            }
         )
         ItemFormTextField(
-            value = uiState.description,
             labelRes = R.string.item_description_form,
-            onFieldChange = { onFieldChange( ItemField.Description(it))},
+            content = {
+                OutlinedTextField(
+                    value = uiState.description ?: "",
+                    onValueChange = {
+                        onFieldChange( ItemField.Description(it.ifBlank { null }))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            },
         )
     }
 }
 
 @Composable
 private fun ItemFormTextField(
-    value: String,
     labelRes: Int,
-    onFieldChange: (String) -> Unit,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    content: @Composable (() -> Unit),
 ) {
-    var itemValue by remember(value) { mutableStateOf(value) }
-
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -89,15 +117,7 @@ private fun ItemFormTextField(
                 bottom = 8.dp,
             ),
         )
-        OutlinedTextField(
-            value = itemValue,
-            onValueChange = {
-                itemValue = it
-                if (it.isNullOrBlank().not()) onFieldChange(itemValue)
-            },
-            modifier = Modifier.fillMaxWidth(),
-            keyboardOptions = keyboardOptions,
-        )
+        content()
     }
 }
 
