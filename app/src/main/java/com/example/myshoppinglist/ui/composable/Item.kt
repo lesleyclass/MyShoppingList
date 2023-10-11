@@ -33,7 +33,7 @@ internal fun Item(
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = item.name,
-                style = MaterialTheme.typography.subtitle2,
+                style = MaterialTheme.typography.body1,
             )
             Spacer(modifier = Modifier.weight(1f))
             Text(
@@ -41,10 +41,13 @@ internal fun Item(
                     id = R.string.item_value_label,
                     item.value,
                 ),
-                style = MaterialTheme.typography.subtitle2,
+                style = MaterialTheme.typography.body1,
             )
         }
-        Text(text = item.description)
+        Text(
+            text = item.description,
+            style = MaterialTheme.typography.body2,
+        )
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -53,7 +56,7 @@ internal fun Item(
                     id = R.string.item_quantity_label,
                     item.quantity,
                 ),
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.body2,
             )
             Spacer(modifier = Modifier.weight(1f))
             Text(
@@ -61,7 +64,7 @@ internal fun Item(
                     id = R.string.item_total_value_label,
                     item.totalValue,
                 ),
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.body2,
             )
         }
     }

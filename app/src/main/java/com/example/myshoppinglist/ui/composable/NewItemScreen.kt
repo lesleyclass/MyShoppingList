@@ -1,14 +1,21 @@
 package com.example.myshoppinglist.ui.composable
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -64,7 +71,9 @@ internal fun  NewItemScreen(
     onFieldChange: (ItemField) -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         SectionHeader(
@@ -77,21 +86,31 @@ internal fun  NewItemScreen(
         )
         Spacer(modifier = Modifier.weight(1f))
         Row(
-            Modifier.fillMaxWidth().testTag(""),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally,),
         ) {
             Button(
                 onClick = { onCancelButtonClick(uiState) },
                 shape = RoundedCornerShape(50.dp),
-                modifier = Modifier.weight(0.5f).fillMaxWidth().height(50.dp)
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
+                modifier = Modifier
+                    .weight(0.5f)
+                    .fillMaxWidth()
+                    .height(50.dp),
             ) {
                 Text(text = stringResource(R.string.cancel_button_label).uppercase())
             }
             Button(
                 onClick = { onSaveButtonClick(uiState.newItem) },
                 shape = RoundedCornerShape(50.dp),
-                modifier = Modifier.weight(0.5f).fillMaxWidth().height(50.dp)
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
+                modifier = Modifier
+                    .weight(0.5f)
+                    .fillMaxWidth().
+                    height(50.dp),
             ) {
                 Text(text = stringResource(R.string.save_button_label).uppercase())
             }

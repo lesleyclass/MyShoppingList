@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 
 internal const val ITEM_LIST_ITEM_TAG = "ItemListItem"
@@ -30,7 +31,7 @@ internal fun ItemList(
                 Item(item)
             }
             if (index < items.lastIndex) {
-                Divider(modifier = Modifier.testTag(ITEM_LIST_DIVIDER_TAG))
+                Divider(thickness = 4.dp,modifier = Modifier.testTag(ITEM_LIST_DIVIDER_TAG))
             }
         }
     }
