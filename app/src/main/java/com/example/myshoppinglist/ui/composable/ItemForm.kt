@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -22,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
+import com.example.myshoppinglist.ui.ItemField
 
 internal const val ITEM_FORM_TAG = "ItemForm"
 
@@ -65,16 +67,6 @@ internal fun ItemForm(
     }
 }
 
-internal sealed class ItemField{
-    abstract val value: String
-
-    class Name(override val value: String) : ItemField()
-    class Value(override val value: String) : ItemField()
-    class Quantity(override val value: String) : ItemField()
-    class TotalValue(override val value: String) : ItemField()
-    class Description(override val value: String) : ItemField()
-}
-
 @Composable
 private fun ItemFormTextField(
     value: String,
@@ -82,7 +74,8 @@ private fun ItemFormTextField(
     onFieldChange: (String) -> Unit,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
-    val itemValue by remember(value) { mutableStateOf(value) }
+    var itemValue by remember(value) { mutableStateOf(value) }
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -98,7 +91,10 @@ private fun ItemFormTextField(
         )
         OutlinedTextField(
             value = itemValue,
-            onValueChange = { onFieldChange(itemValue) },
+            onValueChange = {
+                itemValue = it
+                onFieldChange(itemValue)
+            },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = keyboardOptions,
         )

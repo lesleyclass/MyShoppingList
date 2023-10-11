@@ -1,15 +1,19 @@
 package com.example.myshoppinglist.ui.navigation
 
 import androidx.navigation.NavController
-import com.example.myshoppinglist.ItemUiState
+import com.example.myshoppinglist.ShoppingListUiState
+import com.example.myshoppinglist.ui.ITEMS_ARG
 import com.example.myshoppinglist.ui.navigation.destination.NewProduct
 
 internal data class ShoppingListNavigator(
     private val navController: NavController,
 ) {
-    fun navigateToNewItem(itemUiState: ItemUiState) {
-        navController.navigate(NewProduct.createRoute(itemUiState))
+    fun navigateToNewItem() {
+        navController.navigate(NewProduct.route)
     }
 
-    fun navigateToBackScreen() = navController.popBackStack()
+    fun navigateToBackScreen(uiState: ShoppingListUiState){
+        navController.previousBackStackEntry?.savedStateHandle?.set(ITEMS_ARG, uiState)
+        navController.popBackStack()
+    }
 }

@@ -9,11 +9,11 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.text.AnnotatedString
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.myshoppinglist.ui.randomItemUiState
+import com.example.myshoppinglist.R
+import com.example.myshoppinglist.ui.randomShoppingListUiState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import com.example.myshoppinglist.R
 
 @RunWith(AndroidJUnit4::class)
 internal class NewItemScreenTest {
@@ -23,7 +23,7 @@ internal class NewItemScreenTest {
 
     @Test
     fun newItemScreen_shouldDisplaySectionHeader() {
-        val uiState = randomItemUiState()
+        val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
             NewItemScreen(
@@ -40,7 +40,7 @@ internal class NewItemScreenTest {
 
     @Test
     fun newItemScreen_shouldDisplayItemForm() {
-        val uiState = randomItemUiState()
+        val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
             NewItemScreen(
@@ -57,7 +57,7 @@ internal class NewItemScreenTest {
 
     @Test
     fun newItemScreen_shouldDisplayCancelButton() {
-        val uiState = randomItemUiState()
+        val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
             NewItemScreen(
@@ -79,7 +79,7 @@ internal class NewItemScreenTest {
 
     @Test
     fun newItemScreen_shouldDisplaySaveButton() {
-        val uiState = randomItemUiState()
+        val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
             NewItemScreen(

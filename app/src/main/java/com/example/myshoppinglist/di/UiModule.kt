@@ -7,9 +7,12 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 internal fun uiModule (): Module = module {
+    single { ItemsStore() }
+
     viewModel { (initialState: ShoppingListUiState) ->
         ShoppingListViewModel(
             initialState = initialState,
+            itemsStore = get(),
         )
     }
 }

@@ -3,17 +3,17 @@ package com.example.myshoppinglist.ui.navigation.arg
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
-import com.example.myshoppinglist.ItemUiState
+import com.example.myshoppinglist.ShoppingListUiState
 
-internal class ItemNavType : CustomNavType<ItemUiState>() {
+internal class ItemNavType : CustomNavType<ShoppingListUiState>() {
 
-    override fun get(bundle: Bundle, key: String): ItemUiState? =
+    override fun get(bundle: Bundle, key: String): ShoppingListUiState? =
         bundle.parcelable(key)
 
-    override fun parseValue(value: String): ItemUiState =
+    override fun parseValue(value: String): ShoppingListUiState =
         decode(value)
 
-    override fun put(bundle: Bundle, key: String, value: ItemUiState) {
+    override fun put(bundle: Bundle, key: String, value: ShoppingListUiState) {
         bundle.putParcelable(key, value)
     }
 }

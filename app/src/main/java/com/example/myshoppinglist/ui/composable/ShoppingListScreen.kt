@@ -12,8 +12,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -22,6 +20,7 @@ import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
+import com.example.myshoppinglist.ui.NavigateToBackScreen
 import com.example.myshoppinglist.ui.NavigateToNewItem
 import com.example.myshoppinglist.ui.OnCreateNewItemClick
 import com.example.myshoppinglist.ui.composable.toolbar.TopAppBar
@@ -34,11 +33,10 @@ private const val BUTTON_TAG = "Button"
 @Composable
 internal fun ShoppingListScreen(
     viewModel: ShoppingListViewModel,
+    uiState: ShoppingListUiState,
     navigator: ShoppingListNavigator,
     onCloseClick: () -> Unit,
 ){
-    val uiState by viewModel.stateFlow.collectAsState()
-
     ShoppingListScreen(
         uiState = uiState,
         onCreateNewItemClick = { viewModel.onSendEvent(OnCreateNewItemClick) },
@@ -48,7 +46,8 @@ internal fun ShoppingListScreen(
     LaunchedEffect(key1 = Unit) {
         viewModel.effectFlow.collect{ effect ->
             when (effect) {
-                is NavigateToNewItem -> { navigator.navigateToNewItem(effect.item) }
+                is NavigateToNewItem -> { navigator.navigateToNewItem() }
+                is NavigateToBackScreen -> { onCloseClick() }
             }
         }
     }
