@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 
+internal const val ITEM_LIST_TAG = "ItemList"
 internal const val ITEM_LIST_ITEM_TAG = "ItemListItem"
 internal const val ITEM_LIST_DIVIDER_TAG = "ItemListDivider"
 
@@ -21,7 +22,7 @@ internal const val ITEM_LIST_DIVIDER_TAG = "ItemListDivider"
 internal fun ItemList(
     items: List<ItemUiState>,
 ) {
-    LazyColumn{
+    LazyColumn(modifier = Modifier.testTag(ITEM_LIST_TAG)){
         itemsIndexed(items) { index, item ->
             Box(
                 modifier = Modifier

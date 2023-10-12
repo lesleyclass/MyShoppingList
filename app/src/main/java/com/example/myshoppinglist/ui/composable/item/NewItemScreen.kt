@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.item
 
 
 import androidx.compose.foundation.layout.Arrangement
@@ -29,11 +29,10 @@ import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
 import com.example.myshoppinglist.domain.ItemField
-import com.example.myshoppinglist.arch.NavigateToBackScreen
-import com.example.myshoppinglist.arch.NavigateToNewItem
-import com.example.myshoppinglist.arch.OnFieldChange
-import com.example.myshoppinglist.arch.OnSaveNewItemClick
-import com.example.myshoppinglist.ui.composable.item.ItemForm
+import com.example.myshoppinglist.ui.composable.shoppinglist.NavigateToBackScreen
+import com.example.myshoppinglist.ui.composable.shoppinglist.NavigateToNewItem
+import com.example.myshoppinglist.ui.composable.shoppinglist.OnFieldChange
+import com.example.myshoppinglist.ui.composable.shoppinglist.OnSaveNewItemClick
 import com.example.myshoppinglist.ui.composable.section.SectionHeader
 import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
 
@@ -76,7 +75,7 @@ internal fun  NewItemScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         SectionHeader(
-            title = stringResource(R.string.new_item_screem_title),
+            title = stringResource(R.string.new_item_screen_title),
             subtitle = stringResource(R.string.new_item_screen_subtitle),
         )
         ItemForm(

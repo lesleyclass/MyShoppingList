@@ -71,4 +71,7 @@ dependencies {
     testImplementation 'androidx.compose.ui:ui-test-junit4:1.5.3'
     androidTestImplementation 'io.github.serpro69:kotlin-faker:1.10.0'
     testImplementation 'io.github.serpro69:kotlin-faker:1.10.0'
+    testImplementation 'com.google.truth:truth:1.1.4'
+    androidTestImplementation 'io.mockk:mockk-android:1.12.3'
+    testImplementation 'io.mockk:mockk:1.12.3'
 }

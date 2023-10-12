@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.shoppinglist
 
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -10,90 +10,81 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.myshoppinglist.R
-import com.example.myshoppinglist.ui.composable.item.ITEM_FORM_TAG
-import com.example.myshoppinglist.ui.composable.section.SECTION_HEADER_TAG
+import com.example.myshoppinglist.ui.composable.item.ITEM_LIST_TAG
+import com.example.myshoppinglist.ui.composable.section.TOTAL_VALUE_SECTION_TAG
 import com.example.myshoppinglist.ui.randomShoppingListUiState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-internal class NewItemScreenTest {
+internal class ShoppingListScreenTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @Test
-    fun newItemScreen_shouldDisplaySectionHeader() {
+    fun shoppingListScree_shouldDisplayToolbar() {
         val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
-            NewItemScreen(
+            ShoppingListScreen(
                 uiState = uiState,
-                onSaveButtonClick = {},
-                onCancelButtonClick = {},
-                onFieldChange = {},
+                onCreateNewItemClick = {},
+                onCloseClick = {},
             )
         }
 
-        composeTestRule.onNodeWithTag(SECTION_HEADER_TAG)
+        composeTestRule.onNodeWithTag(SHOPPING_LIST_SCREEN_TOOLBAR_TAG)
             .assertIsDisplayed()
     }
 
     @Test
-    fun newItemScreen_shouldDisplayItemForm() {
+    fun shoppingListScreen_shouldDisplayTotalValueSection() {
         val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
-            NewItemScreen(
+            ShoppingListScreen(
                 uiState = uiState,
-                onSaveButtonClick = {},
-                onCancelButtonClick = {},
-                onFieldChange = {},
+                onCreateNewItemClick = {},
+                onCloseClick = {},
             )
         }
 
-        composeTestRule.onNodeWithTag(ITEM_FORM_TAG)
+        composeTestRule.onNodeWithTag(TOTAL_VALUE_SECTION_TAG)
             .assertIsDisplayed()
     }
 
     @Test
-    fun newItemScreen_shouldDisplayCancelButton() {
+    fun shoppingListScreen_shouldDisplayItemList() {
         val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
-            NewItemScreen(
+            ShoppingListScreen(
                 uiState = uiState,
-                onSaveButtonClick = {},
-                onCancelButtonClick = {},
-                onFieldChange = {},
+                onCreateNewItemClick = {},
+                onCloseClick = {},
             )
         }
 
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val text =  context.getString(R.string.cancel_button_label).uppercase()
-        val buttonText = listOf(AnnotatedString(text))
-        composeTestRule.onNode(
-            SemanticsMatcher.expectValue(SemanticsProperties.Text, buttonText)
-                .and(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button))
-        ).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(ITEM_LIST_TAG)
+            .assertIsDisplayed()
     }
 
     @Test
-    fun newItemScreen_shouldDisplaySaveButton() {
+    fun shoppingListScree_shouldDisplayNewItemButton() {
         val uiState = randomShoppingListUiState()
 
         composeTestRule.setContent {
-            NewItemScreen(
+            ShoppingListScreen(
                 uiState = uiState,
-                onSaveButtonClick = {},
-                onCancelButtonClick = {},
-                onFieldChange = {},
+                onCreateNewItemClick = {},
+                onCloseClick = {},
             )
         }
 
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val text =  context.getString(R.string.save_button_label).uppercase()
+        val text =  context.getString(R.string.button_label)
         val buttonText = listOf(AnnotatedString(text))
         composeTestRule.onNode(
             SemanticsMatcher.expectValue(SemanticsProperties.Text, buttonText)

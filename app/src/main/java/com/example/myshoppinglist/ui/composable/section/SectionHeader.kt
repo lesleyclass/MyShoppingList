@@ -49,7 +49,7 @@ internal fun SectionHeader(
 @Composable
 internal fun SectionHeaderPreview() {
     SectionHeader(
-        title = stringResource(id = R.string.new_item_screem_title),
+        title = stringResource(id = R.string.new_item_screen_title),
         subtitle = stringResource(R.string.new_item_screen_subtitle),
     )
 }

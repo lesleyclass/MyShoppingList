@@ -94,7 +94,7 @@ internal fun ItemForm(
             }
         )
         ItemFormTextField(
-            labelRes = R.string.item_totalValue_form,
+            labelRes = R.string.item_total_value_form,
             content = {
                 OutlinedTextField(
                     value = uiState.totalValue?.toString() ?: "",

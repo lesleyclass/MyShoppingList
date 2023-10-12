@@ -8,8 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
-import com.example.myshoppinglist.ui.composable.NewItemScreen
-import com.example.myshoppinglist.ui.composable.ShoppingListScreen
+import com.example.myshoppinglist.ui.composable.item.NewItemScreen
+import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListScreen
 import com.example.myshoppinglist.ui.navigation.destination.Main
 import com.example.myshoppinglist.ui.navigation.destination.NewProduct
 import org.koin.androidx.compose.getViewModel

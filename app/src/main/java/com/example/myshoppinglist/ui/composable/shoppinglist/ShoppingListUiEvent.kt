@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.arch
+package com.example.myshoppinglist.ui.composable.shoppinglist
 
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.domain.ItemField

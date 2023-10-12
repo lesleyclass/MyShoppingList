@@ -4,13 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myshoppinglist.ui.store.ItemsStore
 import com.example.myshoppinglist.domain.ItemField
-import com.example.myshoppinglist.arch.NavigateToNewItem
-import com.example.myshoppinglist.arch.NavigateToBackScreen
-import com.example.myshoppinglist.arch.OnCreateNewItemClick
-import com.example.myshoppinglist.arch.OnFieldChange
-import com.example.myshoppinglist.arch.OnSaveNewItemClick
-import com.example.myshoppinglist.arch.ShoppingListUiEffect
-import com.example.myshoppinglist.arch.ShoppingListUiEvent
+import com.example.myshoppinglist.ui.composable.shoppinglist.NavigateToNewItem
+import com.example.myshoppinglist.ui.composable.shoppinglist.NavigateToBackScreen
+import com.example.myshoppinglist.ui.composable.shoppinglist.OnCreateNewItemClick
+import com.example.myshoppinglist.ui.composable.shoppinglist.OnFieldChange
+import com.example.myshoppinglist.ui.composable.shoppinglist.OnSaveNewItemClick
+import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListUiEffect
+import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListUiEvent
 import com.example.myshoppinglist.arch.UiEffect
 import com.example.myshoppinglist.arch.UiEffectImpl
 import com.example.myshoppinglist.arch.UiEvent
@@ -63,7 +63,7 @@ internal class ShoppingListViewModel(
     }
 
     private fun onUpdateItemList(itemUiState: ItemUiState) {
-        itemsStore.insertValues(itemUiState)
+        itemsStore.insertItem(itemUiState)
         initialize()
     }
 
@@ -74,7 +74,7 @@ internal class ShoppingListViewModel(
                 is ItemField.Quantity -> updateQuantityState(field)
                 is ItemField.TotalValue -> updateTotalValueState(field)
                 is ItemField.Description -> updateDescriptionState(field)
-            }
+         }
     }
 
     private fun updateNameState(field: ItemField) = setState {

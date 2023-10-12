@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.shoppinglist
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,16 +23,12 @@ import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
-import com.example.myshoppinglist.arch.NavigateToBackScreen
-import com.example.myshoppinglist.arch.NavigateToNewItem
-import com.example.myshoppinglist.arch.OnCreateNewItemClick
 import com.example.myshoppinglist.ui.composable.section.TotalValueSection
-import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListContent
 import com.example.myshoppinglist.ui.composable.toolbar.TopAppBar
 import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
 
 private const val SHOPPING_LIST_SCREEN_TAG = "ShoppingListScreen"
-private const val SHOPPING_LIST_SCREEN_TITLE_TAG = "ShoppingListScreenTitle"
+const val SHOPPING_LIST_SCREEN_TOOLBAR_TAG = "ShoppingListToolbarScreenTitle"
 private const val BUTTON_TAG = "Button"
 
 @Composable
@@ -72,7 +68,7 @@ internal fun ShoppingListScreen(
                 titleRes = R.string.toolbar_title,
                 navigationIconRes = R.drawable.ic_baseline_close,
                 onNavigationIconClick = { onCloseClick() },
-                tag = SHOPPING_LIST_SCREEN_TITLE_TAG,
+                tag = SHOPPING_LIST_SCREEN_TOOLBAR_TAG,
             )
         },
         scaffoldState = scaffoldState,
