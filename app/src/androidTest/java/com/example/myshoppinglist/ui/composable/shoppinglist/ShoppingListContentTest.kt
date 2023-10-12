@@ -1,9 +1,10 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.shoppinglist
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.myshoppinglist.ui.composable.item.ITEM_LIST_ITEM_TAG
 import com.example.myshoppinglist.ui.randomShoppingListUiState
 import org.junit.Rule
 import org.junit.Test

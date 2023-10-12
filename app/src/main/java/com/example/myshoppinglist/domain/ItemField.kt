@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui
+package com.example.myshoppinglist.domain
 
 internal sealed class ItemField{
     abstract val value: String?

@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui
+package com.example.myshoppinglist.arch
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

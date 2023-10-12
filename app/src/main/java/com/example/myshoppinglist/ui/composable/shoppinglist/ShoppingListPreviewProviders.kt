@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.shoppinglist
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.example.myshoppinglist.ItemUiState

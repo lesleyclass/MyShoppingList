@@ -1,7 +1,6 @@
 package com.example.myshoppinglist.ui.composable
 
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,7 +12,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -23,7 +21,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,11 +28,13 @@ import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
-import com.example.myshoppinglist.ui.ItemField
-import com.example.myshoppinglist.ui.NavigateToBackScreen
-import com.example.myshoppinglist.ui.NavigateToNewItem
-import com.example.myshoppinglist.ui.OnFieldChange
-import com.example.myshoppinglist.ui.OnSaveNewItemClick
+import com.example.myshoppinglist.domain.ItemField
+import com.example.myshoppinglist.arch.NavigateToBackScreen
+import com.example.myshoppinglist.arch.NavigateToNewItem
+import com.example.myshoppinglist.arch.OnFieldChange
+import com.example.myshoppinglist.arch.OnSaveNewItemClick
+import com.example.myshoppinglist.ui.composable.item.ItemForm
+import com.example.myshoppinglist.ui.composable.section.SectionHeader
 import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
 
 

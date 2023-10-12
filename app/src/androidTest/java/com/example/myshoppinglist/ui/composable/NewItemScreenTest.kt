@@ -10,6 +10,8 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.myshoppinglist.R
+import com.example.myshoppinglist.ui.composable.item.ITEM_FORM_TAG
+import com.example.myshoppinglist.ui.composable.section.SECTION_HEADER_TAG
 import com.example.myshoppinglist.ui.randomShoppingListUiState
 import org.junit.Rule
 import org.junit.Test

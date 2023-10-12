@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui
+package com.example.myshoppinglist.arch
 
 import com.example.myshoppinglist.ShoppingListUiState
 

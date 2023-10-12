@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.item
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

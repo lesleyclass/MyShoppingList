@@ -2,19 +2,19 @@ package com.example.myshoppinglist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myshoppinglist.di.ItemsStore
-import com.example.myshoppinglist.ui.ItemField
-import com.example.myshoppinglist.ui.NavigateToNewItem
-import com.example.myshoppinglist.ui.NavigateToBackScreen
-import com.example.myshoppinglist.ui.OnCreateNewItemClick
-import com.example.myshoppinglist.ui.OnFieldChange
-import com.example.myshoppinglist.ui.OnSaveNewItemClick
-import com.example.myshoppinglist.ui.ShoppingListUiEffect
-import com.example.myshoppinglist.ui.ShoppingListUiEvent
-import com.example.myshoppinglist.ui.UiEffect
-import com.example.myshoppinglist.ui.UiEffectImpl
-import com.example.myshoppinglist.ui.UiEvent
-import com.example.myshoppinglist.ui.UiEventImpl
+import com.example.myshoppinglist.ui.store.ItemsStore
+import com.example.myshoppinglist.domain.ItemField
+import com.example.myshoppinglist.arch.NavigateToNewItem
+import com.example.myshoppinglist.arch.NavigateToBackScreen
+import com.example.myshoppinglist.arch.OnCreateNewItemClick
+import com.example.myshoppinglist.arch.OnFieldChange
+import com.example.myshoppinglist.arch.OnSaveNewItemClick
+import com.example.myshoppinglist.arch.ShoppingListUiEffect
+import com.example.myshoppinglist.arch.ShoppingListUiEvent
+import com.example.myshoppinglist.arch.UiEffect
+import com.example.myshoppinglist.arch.UiEffectImpl
+import com.example.myshoppinglist.arch.UiEvent
+import com.example.myshoppinglist.arch.UiEventImpl
 import com.example.myshoppinglist.ui.UiState
 import com.example.myshoppinglist.ui.UiStateImpl
 import com.example.myshoppinglist.validation.ButtonValidation
@@ -82,15 +82,15 @@ internal class ShoppingListViewModel(
     }
 
     private fun updateValueState(field: ItemField) = setState {
-        copy(newItem = newItem.copy( value = field.value?.toDouble())).updateSaveButton()
+        copy(newItem = newItem.copy( value = field.value?.toDoubleOrNull())).updateSaveButton()
     }
 
     private fun updateQuantityState(field: ItemField) = setState {
-        copy(newItem = newItem.copy( quantity = field.value?.toInt())).updateSaveButton()
+        copy(newItem = newItem.copy( quantity = field.value?.toIntOrNull())).updateSaveButton()
     }
 
     private fun updateTotalValueState(field: ItemField) = setState {
-        copy(newItem = newItem.copy( totalValue = field.value?.toDouble())).updateSaveButton()
+        copy(newItem = newItem.copy( totalValue = field.value?.toDoubleOrNull())).updateSaveButton()
     }
 
     private fun updateDescriptionState(field: ItemField) = setState {

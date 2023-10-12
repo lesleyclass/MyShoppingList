@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.section
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule

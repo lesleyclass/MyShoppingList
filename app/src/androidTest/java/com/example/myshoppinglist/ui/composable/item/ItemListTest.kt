@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.item
 
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.junit4.createComposeRule

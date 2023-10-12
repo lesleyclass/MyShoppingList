@@ -2,6 +2,7 @@ package com.example.myshoppinglist.ui.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.Icon
@@ -22,9 +23,11 @@ import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
-import com.example.myshoppinglist.ui.NavigateToBackScreen
-import com.example.myshoppinglist.ui.NavigateToNewItem
-import com.example.myshoppinglist.ui.OnCreateNewItemClick
+import com.example.myshoppinglist.arch.NavigateToBackScreen
+import com.example.myshoppinglist.arch.NavigateToNewItem
+import com.example.myshoppinglist.arch.OnCreateNewItemClick
+import com.example.myshoppinglist.ui.composable.section.TotalValueSection
+import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListContent
 import com.example.myshoppinglist.ui.composable.toolbar.TopAppBar
 import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
 
@@ -63,7 +66,7 @@ internal fun ShoppingListScreen(
     onCloseClick: () -> Unit,
 ){
     Scaffold(
-        modifier = Modifier.testTag(SHOPPING_LIST_SCREEN_TAG),
+        modifier = Modifier.fillMaxSize().testTag(SHOPPING_LIST_SCREEN_TAG),
         topBar = {
             TopAppBar(
                 titleRes = R.string.toolbar_title,

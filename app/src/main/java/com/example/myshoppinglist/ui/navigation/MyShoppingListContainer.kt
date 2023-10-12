@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui
+package com.example.myshoppinglist.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavBackStackEntry
@@ -10,7 +10,6 @@ import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
 import com.example.myshoppinglist.ui.composable.NewItemScreen
 import com.example.myshoppinglist.ui.composable.ShoppingListScreen
-import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
 import com.example.myshoppinglist.ui.navigation.destination.Main
 import com.example.myshoppinglist.ui.navigation.destination.NewProduct
 import org.koin.androidx.compose.getViewModel

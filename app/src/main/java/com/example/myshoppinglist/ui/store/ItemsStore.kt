@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.di
+package com.example.myshoppinglist.ui.store
 
 import com.example.myshoppinglist.ItemUiState
 

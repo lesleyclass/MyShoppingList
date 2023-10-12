@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myshoppinglist.di.uiModule
-import com.example.myshoppinglist.ui.MyShoppingListContainer
-import com.example.myshoppinglist.ui.theme.MyShoppingListTheme
+import com.example.myshoppinglist.ui.navigation.MyShoppingListContainer
+import com.example.myshoppinglist.theme.MyShoppingListTheme
 import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {

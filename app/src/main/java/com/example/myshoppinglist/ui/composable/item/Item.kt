@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.composable
+package com.example.myshoppinglist.ui.composable.item
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
+import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListPreviewProviders
 
 internal const val ITEM_TAG = "Item"
 

@@ -1,4 +1,4 @@
-package com.example.myshoppinglist.ui.theme
+package com.example.myshoppinglist.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
