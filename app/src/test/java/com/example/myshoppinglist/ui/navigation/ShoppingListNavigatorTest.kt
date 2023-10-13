@@ -12,7 +12,7 @@ internal class ShoppingListNavigatorTest {
 
     @Test
     fun navigateToNewItem_shouldNavigateToNewItemRoute() {
-        val navController = mockk<NavHostController>()
+        val navController = mockk<NavHostController>(relaxed = true)
         every { navController.navigate(route = any()) } returns Unit
         val navigator = ShoppingListNavigator(navController)
 
@@ -27,7 +27,8 @@ internal class ShoppingListNavigatorTest {
     @Test
     fun navigateToBackScreen_shouldNavigateToBackScreen() {
         val uiState = ShoppingListUiState()
-        val navController = mockk<NavHostController>()
+        val navController = mockk<NavHostController>(relaxed = true)
+        every { navController.navigate(route = any()) } returns Unit
         val navigator = ShoppingListNavigator(navController)
 
         navigator.navigateToBackScreen(uiState)

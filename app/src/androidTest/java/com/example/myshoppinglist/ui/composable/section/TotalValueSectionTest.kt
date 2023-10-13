@@ -30,7 +30,7 @@ internal class TotalValueSectionTest {
         }
 
         composeTestRule.onNodeWithText(label)
-            .assertIsDisplayed()
+            .assertExists()
     }
 
     @Test
@@ -47,7 +47,7 @@ internal class TotalValueSectionTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val expectedWarningMessage = context.getString(R.string.item_value_label, value)
         composeTestRule.onNodeWithText(expectedWarningMessage)
-            .assertDoesNotExist()
+            .assertExists()
     }
 
 

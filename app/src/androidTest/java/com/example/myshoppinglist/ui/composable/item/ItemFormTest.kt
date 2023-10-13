@@ -1,5 +1,6 @@
 package com.example.myshoppinglist.ui.composable.item
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -30,7 +31,7 @@ internal class ItemFormTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val expectedWarningMessage = context.getString(R.string.item_name_form)
         composeTestRule.onNodeWithText(expectedWarningMessage)
-            .assertDoesNotExist()
+            .assertIsDisplayed()
     }
 
     @Test
@@ -47,7 +48,7 @@ internal class ItemFormTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val expectedWarningMessage = context.getString(R.string.item_value_form)
         composeTestRule.onNodeWithText(expectedWarningMessage)
-            .assertDoesNotExist()
+            .assertIsDisplayed()
     }
 
     @Test
@@ -64,7 +65,7 @@ internal class ItemFormTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val expectedWarningMessage = context.getString(R.string.item_quantity_form)
         composeTestRule.onNodeWithText(expectedWarningMessage)
-            .assertDoesNotExist()
+            .assertIsDisplayed()
     }
 
     @Test
@@ -81,7 +82,7 @@ internal class ItemFormTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val expectedWarningMessage = context.getString(R.string.item_total_value_form)
         composeTestRule.onNodeWithText(expectedWarningMessage)
-            .assertDoesNotExist()
+            .assertIsDisplayed()
     }
 
     @Test
@@ -98,6 +99,6 @@ internal class ItemFormTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val expectedWarningMessage = context.getString(R.string.item_description_form)
         composeTestRule.onNodeWithText(expectedWarningMessage)
-            .assertDoesNotExist()
+            .assertIsDisplayed()
     }
 }

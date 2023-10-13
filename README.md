@@ -8,8 +8,7 @@
 
 > Gif mostrando o app em funcionamento.
 
-### Funcionalidades Implementadas 
-
+### Funcionalidades Implementadas
 * Adiciona novo item na lista
 * Verificação dos campos do formulário para habilitar o botão de salvar
 * Mostra lista de itens adicionados

@@ -9,7 +9,7 @@ internal class NewProductTest {
 
     @Test
     fun route_shouldReturnNewProductRoute() {
-        val actual = Main.route
+        val actual = NewProduct.route
 
         val expected = "new-product"
         assertThat(actual).isEqualTo(expected)

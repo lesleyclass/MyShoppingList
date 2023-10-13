@@ -1,6 +1,7 @@
 package com.example.myshoppinglist.di
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ui.store.ItemsStore
 import com.example.myshoppinglist.validation.SaveButtonValidation
 import org.junit.Test
@@ -16,10 +17,12 @@ internal class UitModulesTest : KoinTest {
     fun koin_shouldCheckModules() {
         koinApplication {
             val itemsStore = ItemsStore()
+            val initialState = ShoppingListUiState()
             val saveButtonValidation = SaveButtonValidation()
 
             checkModules {
                 withInstance(itemsStore)
+                withInstance(initialState)
                 withInstance(saveButtonValidation)
 
                 modules(
