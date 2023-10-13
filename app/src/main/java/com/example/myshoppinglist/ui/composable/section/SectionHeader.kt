@@ -10,9 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.R
 
 internal const val SECTION_HEADER_SUBTITLE_TAG = "SectionHeaderSubtitle"
@@ -25,7 +25,10 @@ internal fun SectionHeader(
 ) {
     Column(
         modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp)
+            .padding(
+                start = dimensionResource(id = R.dimen.spacing_small),
+                end = dimensionResource(id = R.dimen.spacing_small),
+            )
             .fillMaxWidth()
             .testTag(SECTION_HEADER_TAG),
     ) {
@@ -34,7 +37,7 @@ internal fun SectionHeader(
             color = MaterialTheme.colors.onBackground,
             style = MaterialTheme.typography.subtitle1,
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_micro)))
         subtitle?.let { Text(
             text = it,
             color = MaterialTheme.colors.onBackground,

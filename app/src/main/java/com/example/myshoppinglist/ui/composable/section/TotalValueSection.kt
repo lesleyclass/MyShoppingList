@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.R
+import com.example.myshoppinglist.ui.composable.item.FULL_WEIGHT
 
 internal const val TOTAL_VALUE_SECTION_TAG = "TotalValueSection"
+internal const val HALF_ALPHA = 0.5f
 
 @Composable
 internal fun TotalValueSection(
@@ -24,10 +26,10 @@ internal fun TotalValueSection(
 ) {
     Row(
         modifier = Modifier
-            .background(color = colorResource(id = R.color.purple_700).copy(alpha = 0.3f))
+            .background(color = colorResource(id = R.color.purple_700).copy(alpha = HALF_ALPHA))
             .padding(
-                vertical = 16.dp,
-                horizontal = 24.dp,
+                vertical = dimensionResource(id = R.dimen.spacing_small),
+                horizontal = dimensionResource(id = R.dimen.spacing_standard),
             )
             .testTag(TOTAL_VALUE_SECTION_TAG),
     ) {
@@ -36,7 +38,7 @@ internal fun TotalValueSection(
             style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.onSurface,
         )
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(FULL_WEIGHT))
         Text(
             text = stringResource(
                 id = R.string.item_value_label,

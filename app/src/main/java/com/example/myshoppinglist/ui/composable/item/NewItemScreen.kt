@@ -21,21 +21,22 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ShoppingListUiState
 import com.example.myshoppinglist.ShoppingListViewModel
 import com.example.myshoppinglist.domain.ItemField
+import com.example.myshoppinglist.ui.composable.section.SectionHeader
 import com.example.myshoppinglist.ui.composable.shoppinglist.NavigateToBackScreen
 import com.example.myshoppinglist.ui.composable.shoppinglist.NavigateToNewItem
 import com.example.myshoppinglist.ui.composable.shoppinglist.OnFieldChange
 import com.example.myshoppinglist.ui.composable.shoppinglist.OnSaveNewItemClick
-import com.example.myshoppinglist.ui.composable.section.SectionHeader
 import com.example.myshoppinglist.ui.navigation.ShoppingListNavigator
 
+internal const val HALF_WEIGHT = 0.5f
 
 @Composable
 internal fun NewItemScreen(
@@ -82,33 +83,36 @@ internal fun  NewItemScreen(
             uiState = uiState.newItem,
             onFieldChange = onFieldChange,
         )
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(FULL_WEIGHT))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.spacing_small)),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally,),
+            horizontalArrangement = Arrangement.spacedBy(
+                dimensionResource(id = R.dimen.spacing_small),
+                Alignment.CenterHorizontally,
+            ),
         ) {
             Button(
                 onClick = { onCancelButtonClick(uiState) },
-                shape = RoundedCornerShape(50.dp),
+                shape = RoundedCornerShape(dimensionResource(id = R.dimen.spacing_button_height)),
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
                 modifier = Modifier
-                    .weight(0.5f)
+                    .weight(HALF_WEIGHT)
                     .fillMaxWidth()
-                    .height(50.dp),
+                    .height(dimensionResource(id = R.dimen.spacing_button_height)),
             ) {
                 Text(text = stringResource(R.string.cancel_button_label).uppercase())
             }
             Button(
                 onClick = { onSaveButtonClick(uiState.newItem) },
-                shape = RoundedCornerShape(50.dp),
+                shape = RoundedCornerShape(dimensionResource(id = R.dimen.spacing_button_height)),
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
                 modifier = Modifier
-                    .weight(0.5f)
+                    .weight(HALF_WEIGHT)
                     .fillMaxWidth().
-                    height(50.dp),
+                    height(dimensionResource(id = R.dimen.spacing_button_height)),
                 enabled = uiState.isSaveButtonEnabled,
             ) {
                 Text(text = stringResource(R.string.save_button_label).uppercase())

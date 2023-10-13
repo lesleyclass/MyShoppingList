@@ -9,10 +9,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
+import com.example.myshoppinglist.R
 
 internal const val ITEM_LIST_TAG = "ItemList"
 internal const val ITEM_LIST_ITEM_TAG = "ItemListItem"
@@ -32,7 +33,9 @@ internal fun ItemList(
                 Item(item)
             }
             if (index < items.lastIndex) {
-                Divider(thickness = 4.dp,modifier = Modifier.testTag(ITEM_LIST_DIVIDER_TAG))
+                Divider(
+                    thickness = dimensionResource(id = R.dimen.spacing_micro),
+                    modifier = Modifier.testTag(ITEM_LIST_DIVIDER_TAG))
             }
         }
     }

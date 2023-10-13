@@ -11,15 +11,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.ui.composable.shoppinglist.ShoppingListPreviewProviders
 
 internal const val ITEM_TAG = "Item"
+internal const val FULL_WEIGHT = 1f
 
 @Composable
 internal fun Item(
@@ -27,9 +28,12 @@ internal fun Item(
 ) {
     Column(
         modifier = Modifier
-            .padding(horizontal = 8.dp, vertical = 2.dp)
+            .padding(
+                horizontal = dimensionResource(id = R.dimen.spacing_tiny),
+                vertical = dimensionResource(id = R.dimen.spacing_micro),
+            )
             .testTag(ITEM_TAG),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_nano)),
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             item.name?.let {
@@ -39,7 +43,7 @@ internal fun Item(
                 )
             }
             item.value?.let {
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.weight(FULL_WEIGHT))
                 Text(
                     text = stringResource(
                         id = R.string.item_value_label,
@@ -56,7 +60,7 @@ internal fun Item(
             )
         }
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_tiny), )
         ) {
             item.quantity?.let {
                 Text(
@@ -68,7 +72,7 @@ internal fun Item(
                 )
             }
             item.totalValue?.let {
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.weight(FULL_WEIGHT))
                 Text(
                     text = stringResource(
                         id = R.string.item_total_value_label,

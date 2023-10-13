@@ -15,12 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.myshoppinglist.ItemUiState
 import com.example.myshoppinglist.R
 import com.example.myshoppinglist.domain.ItemField
@@ -35,7 +35,9 @@ internal fun ItemForm(
     val focusManager = LocalFocusManager.current
 
     Column(
-        modifier = Modifier.padding(16.dp).testTag(ITEM_FORM_TAG),
+        modifier = Modifier
+            .padding(dimensionResource(id = R.dimen.spacing_small))
+            .testTag(ITEM_FORM_TAG),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ItemFormTextField(
@@ -140,8 +142,8 @@ private fun ItemFormTextField(
             style = MaterialTheme.typography.subtitle2,
             textAlign = TextAlign.Start,
             modifier = Modifier.padding(
-                top = 8.dp,
-                bottom = 8.dp,
+                top = dimensionResource(id = R.dimen.spacing_tiny),
+                bottom = dimensionResource(id = R.dimen.spacing_tiny),
             ),
         )
         content()
